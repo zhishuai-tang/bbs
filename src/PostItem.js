@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
  function PostItem(props) {
 
@@ -28,6 +29,17 @@ import React from 'react';
             </div>
         </li>
     );
+}
+
+PostItem.propTypes = {
+    post: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        author: PropTypes.string,
+        date: PropTypes.string,
+        vote: PropTypes.number
+    }).isRequrired,
+    onVote: PropTypes.func.isRequrired
 }
 
 export default PostItem;
