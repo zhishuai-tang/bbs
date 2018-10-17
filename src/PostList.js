@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PostItem from './PostItem';
+import './PostList.css';
 
 // const data = [
 //     { title: "大家一起来讨论React吧", author: "张三", date: "2017-09-01 10:00" }, 
@@ -52,8 +53,8 @@ class PostList extends Component {
 
     render() {
         return (
-            <div>
-                帖子列表：
+            <div className='container'>
+                <h2>帖子列表</h2>
                 <ul>
                     {this.state.posts.map(item =>
                         <PostItem 

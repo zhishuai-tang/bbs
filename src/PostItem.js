@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import "./PostItem.css";
+import like from "./images/like-default.png";
 
  function PostItem(props) {
 
     const handleClick = () => {
         props.onVote(props.post.id);
-    }
+    };
 
     
     const { post } = props;
     return (
-        <li>
-            <div>
+        <li className='item'>
+            <div className='title'>
                 { post.title }
             </div>
             <div>
@@ -20,11 +22,8 @@ import PropTypes from 'prop-types';
             <div>
                 创建时间：<span>{ post.date }</span>
             </div>
-            <div>
-                <button onClick={ handleClick }>
-                    点赞
-                </button>
-                &nbsp;
+            <div className='like'>
+                <span><img alt='vote' src={ like } onClick={ handleClick } /></span>
                 <span>{ post.vote }</span>
             </div>
         </li>
