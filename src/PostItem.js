@@ -37,8 +37,8 @@ PostItem.propTypes = {
         author: PropTypes.string,
         date: PropTypes.string,
         vote: PropTypes.number
-    }).isRequrired,
-    onVote: PropTypes.func.isRequrired
+    }).isRequired,
+    onVote: PropTypes.func.isRequired
 }
 
 export default PostItem;
