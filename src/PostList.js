@@ -58,6 +58,7 @@ class PostList extends Component {
                 <ul>
                     {this.state.posts.map(item =>
                         <PostItem 
+                            key = { item.id }
                             post = { item }
                             onVote = { this.handleVote }
                         />
