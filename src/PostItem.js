@@ -1,40 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import "./PostItem.css";
+import like from "./images/like-default.png";
 
-class PostItem extends Component {
+function PostItem(props) {
 
-    constructor(props) {
-        super(props);
+    const handleClick = () => {
+        props.onVote(props.post.id);
+    };
 
-        this.state = {
-            vote: 0
-        };
-    }
+    
+    const { post } = props;
+    return (
+        <li className='item'>
+            <div className='title'>
+                { post.title }
+            </div>
+            <div>
+                创建人：<span>{ post.author }</span>
+            </div>
+            <div>
+                创建时间：<span>{ post.date }</span>
+            </div>
+            <div className='like'>
+                <span><img alt='vote' src={ like } onClick={ handleClick } /></span>
+                <span>{ post.vote }</span>
+            </div>
+        </li>
+    );
+}
 
-    handleClick = () => {
-        let vote = this.state.vote;
-        vote++;
-        this.setState({
-            vote: vote
-        });
-    }
-
-    render() {
-        const { title, author, date } = this.props;
-
-        return (
-            <li>
-                <div>{ title }</div>
-                <div>创建人：<span>{ author }</span></div>
-                <div>创建时间：<span>{ date }</span></div>
-                <div>
-                    <button onClick={ this.handleClick }>点赞</button>
-                    &nbsp;
-                    <span>{ this.state.vote }</span>
-                </div>
-            </li>
-        );
-    }
-
+PostItem.propTypes = {
+    post: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        author: PropTypes.string,
+        date: PropTypes.string,
+        vote: PropTypes.number
+    }).isRequired,
+    onVote: PropTypes.func.isRequired
 }
 
 export default PostItem;
